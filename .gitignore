@@ -109,6 +109,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+test_cuda_126/
+test_cuda_*/
 
 # Spyder project settings
 .spyderproject
@@ -128,24 +130,32 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-*.wav
-run_*.sh
+# PyCharm
+.idea/
 
-# RunPod deployment files
+# VS Code
+.vscode/
+
+# Local deployment files
+deploy_runpod.py
+DEPLOYMENT_README.md
 runpod_stt_pod_info.json
-runpod_pod_*.json
-*.pod_id
 
-# Docker artifacts  
-Dockerfile.cuda*
-docker-compose.override.yml
+# Audio test files
+*.wav
+*.mp3
+*.flac
 
-# Load testing results
-load_test_results_*.json
-capacity_test_*.log
-stt_performance_*.csv
-
-# Model cache (if downloaded locally)
+# Model cache
 models/
+cache/
 .cache/
-*.model
+
+# Docker artifacts
+.dockerignore
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
