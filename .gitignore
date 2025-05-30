@@ -130,3 +130,22 @@ dmypy.json
 
 *.wav
 run_*.sh
+
+# RunPod deployment files
+runpod_stt_pod_info.json
+runpod_pod_*.json
+*.pod_id
+
+# Docker artifacts  
+Dockerfile.cuda*
+docker-compose.override.yml
+
+# Load testing results
+load_test_results_*.json
+capacity_test_*.log
+stt_performance_*.csv
+
+# Model cache (if downloaded locally)
+models/
+.cache/
+*.model
