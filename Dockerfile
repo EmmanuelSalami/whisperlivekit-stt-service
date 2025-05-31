@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:12.4-cudnn-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
@@ -9,16 +9,19 @@ ARG EXTRAS
 ARG HF_PRECACHE_DIR
 ARG HF_TKN_FILE
 
-# Install system dependencies + Python + pip
+# Install system dependencies + Python + pip + cuDNN libraries
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python3 \
         python3-pip \
         ffmpeg \
-        git && \
+        git \
+        libcudnn9 \
+        libcudnn9-dev && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# Install PyTorch with CUDA 12.4 support
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
 COPY . .
 
